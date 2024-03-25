@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/global.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Web Component</h1>
+    <card>My target</card>
+    
+
+   
+  
+
+    <template id ="card-tarjet">
+    </template>
+
+   
+
+    <p>Crear   nueva tarjeta</p>
+     <card-tarjet>
+        <new slot ="card-tarjet">NewCard</new>
+
+    </card-tarjet>
+
+
+
+
+
+        <style>
+
+        root{
+
+            color: var(--neutral-light-color);
+                    
+        
+        }   
+
+
+           card:default {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 1rem;
+            width: 25%;
+            height: 1px;
+            padding: 2rem 1rem;
+            margin-right: auto;
+            box-sizing: border-box;
+            grid-template-columns: repeat(2, 1fr);
+            background-color: var(--primary-darkest-color);
+            color:var(--secondary-complement-color);
+            border-color: var(--neutral-light-color);
+            transition-duration: all 0.5s linear 0s;
+
+           }     
+           card::before{
+            content: "";
+            display: inline;
+            width: 10%;
+            height: 1px;
+            margin-left: 1rem;
+            
+           background-color: var(--secondary-color);
+           opacity: 1;
+           box-sizing: content-box;
+
+            transition: 0.1s all  linear 0s;
+
+
+
+
+         }
+
+
+           card::after{
+            content: normal;
+            display: inline;
+            width: 3rem;
+            margin: auto;
+           background-color: var(--primary-color);
+           opacity: 1;
+           box-sizing: content-box;
+
+            transition: 0.1s all  linear 0s;
+
+
+
+           }
+
+          
+
+         </style>
+
+        <card>
+            <slot name="card"></slot>
+
+
+             </card>
+
+
+        </template>
+
+        <div id="Shadow"></div>
+        <script>
+            const Card =document.getElementById("card-tarjet");
+            const Shadow=document.getElementById("Shadow");
+            document.body.appendChild(Card.content.clonenode(true));
+            Shadow.attachShadow({mode:"open"});
+            Shadow.shadowRoot.appendChild(Card.content.clonenode(true));
+
+
+            window.customElements.define('my-new',class Card extends HTMLElement {
+
+            constructor() {
+
+                const myCard= document.createElement('new');
+                myCard.textContent="";
+                myCard.ELEMENT_NODE="arguments";
+                myCard.style.columnRuleColor= 'blue';
+                myCard.style.fontSize="5 rem";
+                myCard.style.fontFamily='Arial';
+                this.appendChild(myCard);
+
+
+ 
+            }
+            
+
+            });
+
+
+        </script>
+    <script src="./special-card.js"></script>
+
+             
+    
+    </body>
+    </html>

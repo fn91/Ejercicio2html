@@ -1,0 +1,60 @@
+
+.Layout {
+
+border: 1px solid black;
+width: 50%;
+border-collapse: colapse;
+
+--breakpoint-sm: 375px;
+ --breakpoint-md: 768px;
+ --breakpoint-xl: 1280px;
+}
+tr ,td {
+padding: 10 px;
+
+
+}
+
+table{
+    text-align: left;
+}
+
+
+
+
+@media mobile and (min-width: 375px) and (max-width: 768px){
+    .Layout {
+
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        flex: 2fr 2fr;
+    }
+  }
+
+  @media ipad and (min-width: 768px)and(max-width: 1280px) {
+    .Layout{
+        
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        flex: 4fr 4fr;
+
+
+    }
+  }
+  @media web and (min-width: 1280)and(max-width: 1400px) {
+    .Layout {
+      
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        flex: 6fr 6fr;
+
+
+
+    }
+  }
+ 
+
+
